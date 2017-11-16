@@ -2,7 +2,7 @@
   width: 30vw;
   margin: 0 auto;
   text-align: center;
-  margin-top: 10%;
+  margin-top: -2%;
 }
 #content input{
   display: block;
@@ -19,3 +19,4 @@ margin-bottom: 10px;
   width: 80%;
     margin: auto;
 }
+img{width: 80%}
