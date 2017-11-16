@@ -1,0 +1,21 @@
+#content{
+  width: 30vw;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 10%;
+}
+#content input{
+  display: block;
+  padding: 10px 10px;
+margin-top: 10px;
+width: 100%;
+margin-bottom: 10px;
+}
+#content form{
+  width: 80%;
+  margin: 0 auto;
+}
+.field.is-grouped{
+  width: 80%;
+    margin: auto;
+}
