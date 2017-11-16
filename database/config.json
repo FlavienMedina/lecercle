@@ -1,0 +1,7 @@
+{
+		"database": "cercle",
+		"host": "127.0.0.1",
+		"username": "Abdoulaye",
+		"password": null,
+		"dialect": "postgres"
+	}

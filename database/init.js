@@ -4,8 +4,9 @@ const Sequelize = require('sequelize');
 
 let db = {};
 
-db.sequelize = new Sequelize('cercle', 'flavien', '', {
-  host: 'localhost', dialect: 'postgres'
+const config = require(path.join(__dirname, 'config.json'));
+db.sequelize = new Sequelize(config.database, config.username, config.password, {
+  host: config.host, dialect: config.dialect
 });
 
 let model_pathname = path.join(__dirname, 'models');

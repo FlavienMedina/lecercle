@@ -10,6 +10,7 @@ const app = express();
 const index = require('./routes/index');
 const users = require('./routes/users');
 const signup = require('./routes/signup');
+const signin = require('./routes/signin');
 
 const port = process.argv[2] || '4242';
 
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 app.use('/', index);
 app.use('/users', users);
+app.use('/signin', signin);
 app.use('/signup', signup);
 
 // catch 404 and forward to error handler
