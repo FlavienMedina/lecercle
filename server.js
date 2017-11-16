@@ -1,43 +1,42 @@
+const express    = require('express');
+const path       = require('path');
+const moment     = require('moment');
+const bodyParser = require('body-parser');
 
-const express = require('express');
-const bodyParser = require('body-parser')
-const fs = require('fs');
-const path    = require('path');
-const mLog    = require('./modules/mLog');
+const db = require('./database/init');
 
-const port = process.argv[2] || 4242;
-const app  = express();
+const app = express();
 
-app.use(session({
-  secret: 'flavienmedina',
-  resave: false,
-  saveIninitialized: true
-}))
+const index = require('./routes/index');
+const users = require('./routes/users');
+
+const port = process.argv[2] || '4242';
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
-
-app.use((request, response, next) => {
-  console.log("Cookie:" request.cookies);
-  if (request.session.userInfos) {
-    response.get("x-my-user-data", JSON.stringify(request.session.userInfos));
-  }
-})
-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Routes
+app.use('/', index);
+app.use('/users', users);
 
-app.post('/add-session', (request, response) => {
-  request.sessions.userInfos = request.body;
-  response.status(200).end();
-
-  mLog.info(`${request.method} ${request.url}`);
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  let err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-app.get('*', (request, response) => {
-  mLog.err(`The URL ${request.url} doesn't exist`);
-  response.sendFile(path.join(__dirname, 'public', '404.html'))
-});
+db.sequelize.sync().then(() => {
+  console.log("Database config success!");
 
-app.listen(port, () => {
-  mLog.info(`Server is running on port ${port}`);
-})
+  app.listen(port, (err) => {
+    console.log(`Server is running on port ${port}`);
+  });
+
+}).catch((err) => {
+  console.error('Unable to connect to the database:', err);
+});

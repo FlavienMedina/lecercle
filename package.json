@@ -1,25 +1,19 @@
 {
-  "name": "lecercle",
+  "name": "intra",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
-  "dependencies": {
-    "pg-hstore": "^2.3.2",
-    "sequelize": "^4.22.7"
-  },
-  "devDependencies": {},
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FlavienMedina/lecercle.git"
-  },
-  "author": "Abdoulaye & Flavien",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FlavienMedina/lecercle/issues"
-  },
-  "homepage": "https://github.com/FlavienMedina/lecercle#readme"
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "moment": "^2.19.2",
+    "nodemailer": "^4.4.0"
+  }
 }
