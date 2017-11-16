@@ -1,0 +1,25 @@
+{
+  "name": "lecercle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.22.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlavienMedina/lecercle.git"
+  },
+  "author": "Abdoulaye & Flavien",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FlavienMedina/lecercle/issues"
+  },
+  "homepage": "https://github.com/FlavienMedina/lecercle#readme"
+}
