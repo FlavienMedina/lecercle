@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
-  </head>
-  <body>
-    <section class="hero is-fullheight is-primary">
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <h3 class="title is-2">
-            Hey! <%= count %>
-          </h3>
-        </div>
-      </div>
-    </section>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+      <img src="img/logo.png" alt="">
+      <a class="button is-primary is-focused">Home</a>
+      <a class="button">Profil</a>
+      <a class="button">Modules</a>
+      <a class="button">Messenger</a>
+      <a class="button is-danger">Logout</a>
+    </div>
+    <div class="main">
+      <span class="date">16 Novembre 2017</span>
+      <h1 class="title is-1">Home</h1>
+      <h3 class="title is-3">Hello, {Name}</h3>
+      <p>The people who are crazy enough to think they can change the world are the ones who do. <span> - Steve Jobs</span> </p>
+    </div>
+</body>
+
 </html>
