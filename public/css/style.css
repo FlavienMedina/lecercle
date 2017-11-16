@@ -19,4 +19,22 @@ margin-bottom: 10px;
   width: 80%;
     margin: auto;
 }
-img{width: 80%}
+.sidebar,.main{
+  display: block;
+  float: left;
+}
+.sidebar{
+  width: 20%;
+}
+.button{
+  display: block;
+  margin: 20px;
+}
+.main{
+  padding: 15px;
+  width: 80%;
+}
+.date{
+  padding: 5px 15px;
+  float: right;
+}
