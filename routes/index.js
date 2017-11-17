@@ -4,10 +4,12 @@ const db = require('../database/init');
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  console.log(req.session.users.firstname);
-  db.user.count().then((nb) => {
-    res.render('index', { count: nb });
-  });
+  if (req.session.users) {
+    res.render('index',{user:req.session.users});
+  }
+  else {
+    res.redirect('/signin');
+  }
 });
 
 module.exports = router;

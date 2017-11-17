@@ -34,7 +34,6 @@ router.post('/', (req, res) => {
             email: data.email
           }
           req.session.users = user;
-          console.log("SESSION : ", req.session.users);
           res.redirect('/');
         } else {
           console.log("wrong password");
