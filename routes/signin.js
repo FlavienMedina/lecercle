@@ -1,41 +1,53 @@
 const express = require('express');
+const session = require('express-session');
+const app = express();
 const router = express.Router();
 
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const db = require('../database/init');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+}))
+
 
 /* GET home page. */
 router.get('/', (req, res) => {
   res.render('signin');
-  });
+});
 
 router.post('/', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
-
-  db.user.count({ where: { username: username } }).then(count => {
-    if(count != 0) {
-      db.user.count({ where: { password: password } }).then(count => {
-        if(count != 0) {
-            res.redirect('/');
+  db.user.findOne({
+    where: {
+      username: username
+    }
+  }).then(data => {
+    if (data != null) {
+      db.user.findOne({
+        where: {
+          username: username,
+          password: password
         }
-        else {
+      }).then(data => {
+        if (data != null) {
+          console.log(data.id + ' : SIGN IN');
+          req.session.userId = data.id;
+          console.log("SESSION : " + req.session.userId);
+          res.redirect('/');
+        } else {
           console.log("wrong password");
         }
       })
-    }
-    else {
+    } else {
       console.log("username doesn't exist");
     }
-  } );
-
-
-  // let user =
-  //   db.user.update({
-  //     firstname: req.body.firstname,
-  //     password: req.body.password,
-  //
-  //   }).then(() => {
-  //     res.redirect('/');
-  //   });
+  })
 });
 module.exports = router;
