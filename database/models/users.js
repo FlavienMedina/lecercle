@@ -9,15 +9,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isEmail: true,
-
+        isEmail: true
       }
     },
     birthday: DataTypes.DATE,
     phone: DataTypes.INTEGER,
     password: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     password_confirmation: DataTypes.VIRTUAL,
   }, {
