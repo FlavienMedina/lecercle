@@ -2,24 +2,33 @@ const express    = require('express');
 const path       = require('path');
 const moment     = require('moment');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 const db = require('./database/init');
 
 const app = express();
-
-const index = require('./routes/index');
-const users = require('./routes/users');
-const signup = require('./routes/signup');
-const signin = require('./routes/signin');
 
 const port = process.argv[2] || '4242';
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+const index = require('./routes/index');
+const users = require('./routes/users');
+const signup = require('./routes/signup');
+const signin = require('./routes/signin');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
 
 // Routes
 app.use('/', index);
