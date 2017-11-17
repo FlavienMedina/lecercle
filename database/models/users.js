@@ -10,13 +10,14 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         isEmail: true,
+
       }
     },
     birthday: DataTypes.DATE,
     phone: DataTypes.INTEGER,
     password: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     password_confirmation: DataTypes.VIRTUAL,
   }, {
