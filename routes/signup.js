@@ -48,6 +48,7 @@ router.post('/', (req, res) => {
           birthday: req.body.birthday,
           phone: req.body.phone,
           password: req.body.password,
+          password_confirmation: req.body.password_confirmation,
         }).then(() => {
           let user = {
             firstname: req.body.firstname,
